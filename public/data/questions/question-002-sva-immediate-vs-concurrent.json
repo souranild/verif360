@@ -1,9 +1,10 @@
 {
   "id": "question-002",
-  "title": "Immediate vs Concurrent SystemVerilog Assertions (SVA)",
+  "title": "Req→Ack within 1–3 cycles — write a concurrent SVA",
   "difficulty": "medium",
   "tags": ["systemverilog", "assertions", "sva"],
-  "description": "Explain the difference between immediate and concurrent assertions and give a concurrent SVA example (req implies ack within 1–3 cycles) that is disabled during reset.",
+  "description": "Scenario: A bus request should be acknowledged shortly after it's asserted, otherwise a bug occurred. Write a concurrent SVA that checks 'req' implies 'ack' within 1–3 cycles and is disabled during reset.\n\nDiagram:\n  clk: ↑   ↑   ↑\n  req: 1   0   0\n  ack: 0   1   0\n\nExplain why 'disable iff (reset)' is important.",
+
   "examples": [
     {
       "input": "assert property (@(posedge clk) disable iff (reset) (req |-> ##[1:3] ack));",

@@ -1,9 +1,9 @@
 {
   "id": "question-005",
-  "title": "Constrained-random verification: write constraints avoiding illegal packets and improving performance",
+  "title": "Constrained-random: generate legal packets quickly (avoid solver nightmares)",
   "difficulty": "medium",
   "tags": ["systemverilog", "randomization", "constraints"],
-  "description": "Write constraints to avoid illegal addresses and zero-data, and explain steps to keep randomization performant (avoid heavy cross-solve, use pre_randomize/post_randomize).",
+  "description": "Random is great — until it's painfully slow. Write constraints that prevent illegal packets (e.g., bad addrs, zero data) and explain techniques to keep randomization fast and reliable.",
   "examples": [
     {
       "input": "class pkt; rand bit [7:0] addr; rand bit [31:0] data; constraint legal {addr inside {[8'h10:8'hEF]};} constraint nonzero {data != 32'h0;} endclass",

@@ -1,0 +1,30 @@
+{
+  "id": "question-008",
+  "title": "Chasing a Heisenbug — isolate an intermittent race in testbench/DUT",
+  "difficulty": "hard",
+  "tags": ["debugging", "race-conditions", "flakiness"],
+  "description": "Scenario: A test sometimes fails (1 in 1000 runs) showing a timing-dependent assertion. Describe a systematic approach to reproduce, isolate, and fix the race. Include debug instrumentation, deterministic reproduction strategies, and how to use waveforms/sanity checks.\n\nTimeline (example):\n  cycle:  t0   t1   t2   t3\n  event:  req  ->   ack  ->  completion\n  The failure only appears when ack and completion align in a tight window.",
+  "examples": [
+    {
+      "input": "Intermittent assertion: 'access conflict' triggered occasionally on concurrent transactions",
+      "output": "Use fixed seeds, instrumentation, assert history, add clocks gating and reproduce failure locally then root-cause timing window",
+      "explanation": "Steps: (1) record random seed and simulation trace, (2) add extra logging and assertions, (3) attempt to localize with directed test, (4) use formal to prove absence of race if possible."
+    }
+  ],
+  "constraints": "Keep performance in mind—only enable heavy tracing when reproducing the failure to limit simulation slowdown.",
+  "hints": [
+    "Save seeds and waveform snippets when failures occur.",
+    "Use $display with contextual ids and small unique markers to help grep failures.",
+    "Try reducing test to a minimal reproducer using binary search on time windows."
+  ],
+  "solution": {
+    "language": "text",
+    "code": "1) Reproduce reliably: capture seed or make directed test. 2) Instrument: add assertions and scoped logging. 3) Re-run with waveforms to inspect signals in the time window. 4) Fix: tighten handshake, add qualifiers, or change scheduling to avoid simultaneous access."
+  },
+  "acceptance_rate": 0.0,
+  "submissions": 0,
+  "topics": ["debugging", "race-conditions", "testbench"],
+  "slug": "hunt-intermittent-race",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

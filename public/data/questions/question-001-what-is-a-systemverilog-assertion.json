@@ -1,9 +1,10 @@
 {
   "id": "question-001",
-  "title": "What is a SystemVerilog Assertion?",
+  "title": "SVA Fundamentals — 'a implies b' (spot protocol violations)",
   "difficulty": "easy",
   "tags": ["systemverilog", "assertions"],
-  "description": "Explain the purpose and use of assertions in SystemVerilog.",
+  "description": "Scenario: You're verifying a simple handshake: when 'req' is asserted, 'ack' must follow. Explain what an assertion does and how it helps catch protocol violations in simulation and formal.\n\nDiagram:\n  req → ack\n\nExplain immediate vs concurrent assertions briefly and provide a tiny example.",
+
   "examples": [
     {
       "input": "assert property (a |-> b);",
