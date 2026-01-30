@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* LeetCode-inspired color palette */
+  --background: #ffffff;
+  --foreground: #1a1a1a; /* Darker for better contrast */
+  --muted: #f8f8f8; /* Slightly darker for better text contrast */
+  --muted-foreground: #6b7280; /* Darker muted text */
+  --border: #e5e5e5;
+  --primary: #007acc;
+  --primary-hover: #005999;
+  --secondary: #f8f9fa;
+  --accent: #eff6ff;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --card: #ffffff;
+  --card-hover: #fafafa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --font-sans: 'Poppins', sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1a1a;
+    --foreground: #ffffff; /* Brighter for better contrast */
+    --muted: #2a2a2a;
+    --muted-foreground: #d1d5db; /* Brighter muted text */
+    --border: #404040;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --secondary: #2a2a2a;
+    --accent: #1e3a8a;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --card: #262626;
+    --card-hover: #333333;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Poppins', sans-serif;
+}
