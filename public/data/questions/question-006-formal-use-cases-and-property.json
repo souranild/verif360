@@ -1,0 +1,29 @@
+{
+  "id": "question-006",
+  "title": "Formal verification use-cases and write a mutual exclusion property",
+  "difficulty": "hard",
+  "tags": ["formal", "assertions", "sva"],
+  "description": "When to use formal verification vs simulation; give a small SVA property that asserts mutual exclusion (two grants should never be true simultaneously).",
+  "examples": [
+    {
+      "input": "assert property (@(posedge clk) !(grant1 && grant2));",
+      "output": "Formal tools or simulation-based assertion checking find violations where both grant1 and grant2 are asserted simultaneously.",
+      "explanation": "Formal is excellent for exhaustive corner-case proof (deadlocks or mutual exclusion)."
+    }
+  ],
+  "constraints": "Formal checks typically require a reset and stable environment constraints for soundness.",
+  "hints": [
+    "Explain Bounded Model Checking (BMC) vs induction.",
+    "Use formal assumptions to restrict environment."
+  ],
+  "solution": {
+    "language": "systemverilog",
+    "code": "property p_mutual_excl; @(posedge clk) !(grant1 && grant2); endproperty\nassert property (p_mutual_excl) else $error(\"Mutual exclusion violated\");"
+  },
+  "acceptance_rate": 0.0,
+  "submissions": 0,
+  "topics": ["formal", "sva"],
+  "slug": "formal-use-cases-and-property",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

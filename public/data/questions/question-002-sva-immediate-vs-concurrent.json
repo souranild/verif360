@@ -1,0 +1,29 @@
+{
+  "id": "question-002",
+  "title": "Immediate vs Concurrent SystemVerilog Assertions (SVA)",
+  "difficulty": "medium",
+  "tags": ["systemverilog", "assertions", "sva"],
+  "description": "Explain the difference between immediate and concurrent assertions and give a concurrent SVA example (req implies ack within 1–3 cycles) that is disabled during reset.",
+  "examples": [
+    {
+      "input": "assert property (@(posedge clk) disable iff (reset) (req |-> ##[1:3] ack));",
+      "output": "Checks that whenever req is true, ack follows within 1 to 3 clock cycles; assertion ignored while reset is asserted.",
+      "explanation": "This is a concurrent assertion (temporal) with 'disable iff' guarding reset."
+    }
+  ],
+  "constraints": "Signals must be sampled on the same clock domain.",
+  "hints": [
+    "Immediate assertions are procedural (checked immediately).",
+    "Concurrent assertions express temporal relationships across cycles."
+  ],
+  "solution": {
+    "language": "systemverilog",
+    "code": "property p_req_ack; @(posedge clk) disable iff (reset) (req |-> ##[1:3] ack); endproperty\nassert property (p_req_ack) else $error(\"Req->Ack not observed within 1..3 cycles\");"
+  },
+  "acceptance_rate": 0.0,
+  "submissions": 0,
+  "topics": ["systemverilog", "assertions"],
+  "slug": "sva-immediate-vs-concurrent",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "question-001",
+  "title": "What is a SystemVerilog Assertion?",
+  "difficulty": "easy",
+  "tags": ["systemverilog", "assertions"],
+  "description": "Explain the purpose and use of assertions in SystemVerilog.",
+  "examples": [
+    {
+      "input": "assert property (a |-> b);",
+      "output": "Passes if b follows a.",
+      "explanation": "This assertion checks that whenever a occurs, b follows."
+    }
+  ],
+  "constraints": "a and b must be valid signals.",
+  "hints": ["Review implication operators.", "Use disable iff for resets."],
+  "solution": {
+    "language": "systemverilog",
+    "code": "assert property (a |-> b);"
+  },
+  "acceptance_rate": 0.95,
+  "submissions": 1200,
+  "topics": ["systemverilog", "verification"],
+  "slug": "what-is-a-systemverilog-assertion",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

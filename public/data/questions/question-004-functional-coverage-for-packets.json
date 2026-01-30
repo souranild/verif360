@@ -1,0 +1,29 @@
+{
+  "id": "question-004",
+  "title": "Functional coverage: covergroup for packet type and length cross",
+  "difficulty": "medium",
+  "tags": ["coverage", "systemverilog", "functional-coverage"],
+  "description": "Create a SystemVerilog covergroup that samples packet.type and packet.len and cross the coverpoints to spot missing combinations; explain how you'd interpret and close coverage holes.",
+  "examples": [
+    {
+      "input": "covergroup pkt_cg @(posedge clk); type_cp: coverpoint pkt.type { bins read = {0}; bins write = {1}; } len_cp: coverpoint pkt.len; cross_cp: cross type_cp, len_cp; endgroup",
+      "output": "Coverage report shows percentages per bin and cross; missing crosses indicate scenarios to add as directed tests or constraint tweaks.",
+      "explanation": "Use cross coverage and weight bins if needed; use assertions and directed tests to exercise uncovered combos."
+    }
+  ],
+  "constraints": "Sample at a stable point after packet fields are assigned.",
+  "hints": [
+    "Use 'iff' qualifiers to avoid sampling during invalid states.",
+    "Use 'option.per_instance=1' when needed."
+  ],
+  "solution": {
+    "language": "systemverilog",
+    "code": "covergroup pkt_cg @(posedge clk);\n  type_cp: coverpoint pkt.type { bins r = {0}; bins w = {1}; }\n  len_cp: coverpoint pkt.len;\n  cross_cp: cross type_cp, len_cp;\nendgroup\n// Instantiate and sample in monitor when packet valid"
+  },
+  "acceptance_rate": 0.0,
+  "submissions": 0,
+  "topics": ["coverage", "functional-coverage"],
+  "slug": "functional-coverage-for-packets",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}
