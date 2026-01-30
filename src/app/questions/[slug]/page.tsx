@@ -25,20 +25,37 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
             {/* Problem Description */}
             <div className="bg-card p-6 rounded-lg border border-border lg:col-span-2">
               <header className="mb-6">
-                <h1 className="text-2xl font-bold mb-2 text-foreground">
-                  {question.title}
-                </h1>
+                {(() => {
+                  const idMatch = question.id
+                    ? question.id.match(/question-(\d+)/)
+                    : null;
+                  const qnum = idMatch ? idMatch[1] : null;
+                  const qnumLabel = qnum
+                    ? `Q ${String(qnum).padStart(3, "0")}`
+                    : "";
+                  return (
+                    <h1 className="text-2xl font-bold mb-2 text-foreground">
+                      {qnumLabel
+                        ? `${qnumLabel} — ${question.title}`
+                        : question.title}
+                    </h1>
+                  );
+                })()}
                 <div className="flex items-center gap-4 mb-4">
                   <span
                     className={`px-2 py-1 rounded text-sm font-medium ${
-                      question.difficulty === "Easy"
+                      (question.difficulty || "").toString().toLowerCase() ===
+                      "easy"
                         ? "bg-success/10 text-success border border-success/20"
-                        : question.difficulty === "Medium"
+                        : (question.difficulty || "")
+                              .toString()
+                              .toLowerCase() === "medium"
                           ? "bg-warning/10 text-warning border border-warning/20"
                           : "bg-error/10 text-error border border-error/20"
                     }`}
                   >
-                    {question.difficulty}
+                    {question.difficulty.charAt(0).toUpperCase() +
+                      question.difficulty.slice(1)}
                   </span>
                   <span className="text-sm text-muted-foreground">
                     Acceptance: {(question.acceptance_rate * 100).toFixed(1)}%

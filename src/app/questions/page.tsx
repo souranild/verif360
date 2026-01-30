@@ -40,16 +40,16 @@ export default function QuestionsPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="divide-y divide-border bg-card border border-border shadow-sm overflow-hidden sm:rounded-md">
           {questions.map((q) => (
-            <div key={q.slug} className="p-1">
+            <li key={q.slug} className="p-3">
               <QuestionCard q={q} />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between mt-8">
+        <div className="flex items-center justify-between mt-6">
           <div className="text-sm text-muted-foreground">
             Showing 1 to {questions.length} of {questions.length} results
           </div>
