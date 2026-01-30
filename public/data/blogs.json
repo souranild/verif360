@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Introduction to Digital Verification",
+    "author": "Alice Johnson",
+    "date": "2024-01-15T10:00:00Z",
+    "content": "<p>Digital verification is crucial in modern hardware design. This post covers the basics of UVM and SystemVerilog.</p>",
+    "tags": ["Verification", "UVM", "SystemVerilog"],
+    "slug": "introduction-to-digital-verification",
+    "excerpt": "Learn the fundamentals of digital verification.",
+    "featured_image": "/images/verification.jpg",
+    "status": "published"
+  },
+  {
+    "title": "Best Practices for OTP Memory Testing",
+    "author": "Bob Smith",
+    "date": "2024-02-20T14:30:00Z",
+    "content": "<p>OTP memory requires careful testing. Here are some best practices from industry experts.</p>",
+    "tags": ["OTP", "Testing", "Hardware"],
+    "slug": "best-practices-otp-memory-testing",
+    "excerpt": "Essential tips for OTP memory verification.",
+    "featured_image": "/images/otp.jpg",
+    "status": "published"
+  },
+  {
+    "title": "Interview Prep: Common Verification Questions",
+    "author": "Carol Lee",
+    "date": "2024-03-10T09:15:00Z",
+    "content": "<p>Prepare for interviews with these common digital verification questions and answers.</p>",
+    "tags": ["Interview", "Preparation", "Verification"],
+    "slug": "interview-prep-common-verification-questions",
+    "excerpt": "Ace your next verification interview.",
+    "featured_image": "/images/interview.jpg",
+    "status": "published"
+  }
+]
