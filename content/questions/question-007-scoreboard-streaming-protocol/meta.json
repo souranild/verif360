@@ -1,0 +1,22 @@
+{
+  "id": "question-007",
+  "title": "Scoreboard for streaming protocol — verify ordering, duplication & loss",
+  "difficulty": "medium",
+  "tags": ["testbench", "scoreboard", "monitor", "protocol"],
+  "description": "Design a scoreboard that compares observed output transactions to expected reference model results and flags ordering, duplication or loss.",
+  "examples": [
+    { "input": "Expected: [0x10, 0x11, 0x12]\nObserved: [0x10, 0x12, 0x11]", "output": "Scoreboard reports ordering violation.", "explanation": "Maintain a queue of expected transactions and compare each observed transaction in-order; log mismatches and context." }
+  ],
+  "constraints": "Assume a single producer and consumer; timestamps may be used for ordering but be careful with out-of-order delivery due to parallelism.",
+  "hints": ["Use transaction-level abstraction (structs/objects) for packets.", "Keep a reference model (e.g., a simple FIFO) to derive expected outputs."],
+  "solution": { "language": "pseudo", "code": "// Pseudo: scoreboard logic\nexpected_q.push(expected_transaction);\nwhen observed_transaction arrives:\n  if expected_q.empty() -> report unexpected\n  else if observed != expected_q.peek() -> report ordering/duplication/loss and attempt recovery\n  else expected_q.pop();" },
+  "acceptance_rate": 0.0,
+  "submissions": 0,
+  "companies": [
+    { "name": "Microsoft", "logo": "/images/companies/microsoft.svg" },
+    { "name": "Google", "logo": "/images/companies/google.svg" }
+  ],
+  "slug": "scoreboard-streaming-protocol",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

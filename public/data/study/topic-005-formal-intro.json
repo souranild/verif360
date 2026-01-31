@@ -1,9 +1,0 @@
-{
-  "id": "topic-005",
-  "title": "Formal Verification — Intro",
-  "slug": "formal-verification",
-  "excerpt": "An introduction to formal methods and common use-cases.",
-  "content": "# Formal Verification 101\n\nIntroductory coverage of formal verification: model checking, properties, and common practical applications like protocol checks and liveness/safety properties.\n",
-  "tags": ["formal","property"],
-  "children": []
-}

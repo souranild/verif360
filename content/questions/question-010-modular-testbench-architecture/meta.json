@@ -1,0 +1,22 @@
+{
+  "id": "question-010",
+  "title": "Modular Testbench — design agents, TLM interfaces and scoreboards",
+  "difficulty": "medium",
+  "tags": ["uvm", "architecture", "tlm"],
+  "description": "Sketch a reusable testbench with agents for different interfaces, TLM ports for transactions, and a scoreboard for results.",
+  "examples": [
+    { "input": "Create an 'agent' that contains driver, monitor and sequencer; monitor sends transactions over TLM to scoreboard", "output": "A modular testbench where each agent can be turned on/off or replaced without touching the DUT-level test code", "explanation": "Use virtual interfaces and TLM ports for loose coupling and reuse." }
+  ],
+  "constraints": "Design for reusability: avoid tight coupling between agent internals and the test harness.",
+  "hints": ["Use 'uvm_component' structure and `uvm_component_utils` macros.", "Prefer TLM-2.0 style ports for transaction passing between components."],
+  "solution": { "language": "text", "code": "Sketch: env { agent0, agent1 }; agent contains driver/monitor/sequencer; monitor does transactionization and calls scoreboard.write(t). Scoreboard compares with reference model and reports mismatches." },
+  "acceptance_rate": 0.0,
+  "submissions": 0,
+  "companies": [
+    { "name": "AMD", "logo": "/images/companies/amd.svg" },
+    { "name": "ARM", "logo": "/images/companies/arm.svg" }
+  ],
+  "slug": "modular-testbench-architecture",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "blog-007",
+  "title": "Chasing Heisenbugs — Debugging Intermittent Races",
+  "author": "Souranil Das",
+  "date": "2026-01-31T00:00:00Z",
+  "tags": [
+    "debugging",
+    "race-conditions",
+    "testbench"
+  ],
+  "slug": "debugging-intermittent-races",
+  "excerpt": "A practical workflow to reproduce and fix intermittent race conditions in verification.",
+  "featured_image": "",
+  "status": "published"
+}

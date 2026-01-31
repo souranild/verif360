@@ -1,9 +1,0 @@
-{
-  "id": "topic-002",
-  "title": "SystemVerilog Syntax & Simulation",
-  "slug": "systemverilog-syntax",
-  "excerpt": "Key SystemVerilog syntax, constructs and simulation basics.",
-  "content": "# SystemVerilog Basics\n\nThis page contains short examples and notes about `module`, `interface`, `logic`, `always_ff`, and common simulation pitfalls.\n",
-  "tags": ["systemverilog","syntax"],
-  "children": []
-}

@@ -1,0 +1,26 @@
+{
+  "id": "question-005",
+  "title": "Constrained-random: generate legal packets quickly (avoid solver nightmares)",
+  "difficulty": "medium",
+  "tags": ["systemverilog", "randomization", "constraints"],
+  "description": "Random is great — until it's painfully slow. Write constraints that prevent illegal packets (e.g., bad addrs, zero data) and explain techniques to keep randomization fast and reliable.",
+  "examples": [
+    {
+      "input": "class pkt; rand bit [7:0] addr; rand bit [31:0] data; constraint legal {addr inside {[8'h10:8'hEF]};} constraint nonzero {data != 32'h0;} endclass",
+      "output": "Randomization only produces legal addresses and non-zero data; performance remains reasonable if constraints are simple.",
+      "explanation": "Simple range constraints are solver-friendly; complex cross constraints can slow randomize()."
+    }
+  ],
+  "constraints": "Avoid complex solutions that require enumerating large tables; prefer ranges and implications.",
+  "hints": ["Use exclude 'solve' heavy expressions.", "Use 'soft' constraints if you need prioritized relaxation."],
+  "solution": { "language": "systemverilog", "code": "class pkt; rand bit [7:0] addr; rand bit [31:0] data;\n  constraint legal_addr { addr inside {[8'h10:8'hEF]}; }\n  constraint not_zero_data { data != 32'h0; }\n  function void pre_randomize(); if (/* derived fields */) ; endfunction\nendclass" },
+  "acceptance_rate": 0.0,
+  "submissions": 0,
+  "companies": [
+    { "name": "ARM", "logo": "/images/companies/arm.svg" },
+    { "name": "NVIDIA", "logo": "/images/companies/nvidia.svg" }
+  ],
+  "slug": "constrained-random-best-practices",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

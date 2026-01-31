@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react';
 // import { fetchBlogs, fetchQuestions, fetchCourses } from '@/lib/data';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
-import Navigation from '@/components/Navigation';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
+
 export default function Home() {
-  const [blogs, setBlogs] = useState([]);
-  const [questions, setQuestions] = useState([]);
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [questions, setQuestions] = useState<any[]>([]);
   // const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -25,12 +25,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <Navigation />
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-primary via-primary-hover to-accent py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative bg-gradient-to-r from-success to-primary py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.h1 
             className="text-4xl font-bold text-white mb-4"
             initial={{ y: -50, opacity: 0 }}
@@ -58,14 +56,14 @@ export default function Home() {
       </section>
 
       {/* Explore Section */}
-      <section className="py-16 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">Explore</h2>
+      <section className="relative py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl font-bold text-center text-foreground dark:text-white mb-12">Explore</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Blogs */}
             <div>
               <h3 className="text-2xl font-semibold text-foreground mb-4">Latest Blogs</h3>
-              {blogs.slice(0, 3).map((blog) => (
+              {blogs.slice(0, 3).map((blog: any) => (
                 <motion.div
                   key={blog.slug}
                   initial={{ y: 50, opacity: 0 }}
@@ -120,8 +118,8 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="bg-gradient-to-r from-success to-primary py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative bg-gradient-to-r from-success to-primary py-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl font-bold text-white mb-8">Platform Stats</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>

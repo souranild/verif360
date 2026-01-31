@@ -1,0 +1,16 @@
+{
+  "id": "blog-002",
+  "title": "7 Powerful Tricks for SystemVerilog Assertions (SVA)",
+  "author": "Souranil Das",
+  "date": "2026-01-30T00:00:00Z",
+  "tags": [
+    "systemverilog",
+    "assertions",
+    "verification",
+    "tips"
+  ],
+  "slug": "tricks-for-systemverilog-assertions",
+  "excerpt": "Discover advanced tips and lesser-known techniques to write robust SystemVerilog Assertions for your verification projects.",
+  "featured_image": "",
+  "status": "published"
+}

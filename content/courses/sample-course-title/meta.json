@@ -1,0 +1,11 @@
+{
+  "id": "course-001",
+  "title": "Sample Course Title",
+  "description": "A short summary of the course.",
+  "tags": [
+    "tag1",
+    "tag2"
+  ],
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

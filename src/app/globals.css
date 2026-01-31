@@ -8,16 +8,24 @@
   --muted: #f8f8f8; /* Slightly darker for better text contrast */
   --muted-foreground: #6b7280; /* Darker muted text */
   --border: #e5e5e5;
-  --primary: #007acc;
-  --primary-hover: #005999;
+  --primary: #6b60e8; /* +10% brighter violet-blue */
+  --primary-hover: #5b51d1;
   --secondary: #f8f9fa;
-  --accent: #eff6ff;
+  --accent: #f0eaff; /* subtle violet tint */
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
   --card: #ffffff;
   --card-hover: #fafafa;
-}
+  /* Brand blue/violet */
+  --brand-blue: #5b4fe6;
+  --brand-blue-dark: #493ecc;
+
+  /* Particle color (rgb components) used by canvas */
+  --particle-r: 91;
+  --particle-g: 79;
+  --particle-b: 230;
+}  
 
 @theme inline {
   --color-background: var(--background);
@@ -57,8 +65,64 @@
   }
 }
 
+/* Support manual dark mode via .dark on the html element */
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff; /* Brighter for better contrast */
+  --muted: #2a2a2a;
+  --muted-foreground: #d1d5db; /* Brighter muted text */
+  --border: #404040;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #2a2a2a;
+  --accent: #1e3a8a;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --card: #262626;
+  --card-hover: #333333;
+
+  /* particle color in dark mode (slightly lighter) */
+  --particle-r: 120;
+  --particle-g: 100;
+  --particle-b: 255;
+}
+
 body {
-  background: var(--background);
+  background: linear-gradient(90deg, var(--success), var(--primary));
   color: var(--foreground);
   font-family: 'Poppins', sans-serif;
+}
+
+/* Glassy panel (Apple-inspired) */
+.glass {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 10px 30px rgba(31, 38, 135, 0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+  border-radius: 1rem;
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  backdrop-filter: blur(14px) saturate(120%);
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  pointer-events: none; /* decorative only */
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+  mix-blend-mode: overlay;
+  opacity: 0.15;
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.01);
+  }
+  .glass::before { opacity: 0.18; }
 }

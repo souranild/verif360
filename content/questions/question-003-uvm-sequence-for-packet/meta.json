@@ -1,0 +1,26 @@
+{
+  "id": "question-003",
+  "title": "Write a UVM sequence and sequence_item for a packet (addr,data,len)",
+  "difficulty": "hard",
+  "tags": ["uvm", "systemverilog", "sequences"],
+  "description": "Design a UVM packet generator that randomly (but sensibly) throws packets at the DUT — addr, data, len — while avoiding illegal addresses.",
+  "examples": [
+    {
+      "input": "class pkt extends uvm_sequence_item; rand bit [31:0] data; rand bit [7:0] addr; rand bit [3:0] len; constraint legal_addr { addr inside {[8'h10:8'hEF]}; } endclass",
+      "output": "A randomized packet can be generated with 'pkt p = pkt::type_id::create(\"p\"); assert(p.randomize());'",
+      "explanation": "This demonstrates sequence item structure and randomization."
+    }
+  ],
+  "constraints": "Avoid overly complex cross-field constraints for performance.",
+  "hints": ["Use pre_randomize/post_randomize hooks to implement derived fields.", "Use uvm_sequence::start() on the driver sequencer."],
+  "solution": { "language": "systemverilog", "code": "class pkt extends uvm_sequence_item; rand bit [31:0] data; rand bit [7:0] addr; rand bit [3:0] len; constraint legal_addr {addr inside {[8'h10:8'hEF]};} `uvm_object_utils(pkt) endclass" },
+  "acceptance_rate": 0.0,
+  "submissions": 0,
+  "companies": [
+    { "name": "NXP", "logo": "/images/companies/nxp.svg" },
+    { "name": "TI", "logo": "/images/companies/ti.svg" }
+  ],
+  "slug": "uvm-sequence-for-packet",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

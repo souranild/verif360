@@ -1,0 +1,15 @@
+{
+  "id": "blog-004",
+  "title": "UVM Phases & Agents — Building Reusable Testbenches",
+  "author": "Souranil Das",
+  "date": "2026-01-31T00:00:00Z",
+  "tags": [
+    "uvm",
+    "testbench",
+    "architecture"
+  ],
+  "slug": "uvm-phases-agents",
+  "excerpt": "Understand UVM phases and agent responsibilities for modular, maintainable testbenches.",
+  "featured_image": "",
+  "status": "published"
+}

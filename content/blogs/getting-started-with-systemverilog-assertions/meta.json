@@ -1,0 +1,15 @@
+{
+  "id": "blog-001",
+  "title": "Getting Started with SystemVerilog Assertions",
+  "author": "Souranil Das",
+  "date": "2026-01-30T00:00:00Z",
+  "tags": [
+    "systemverilog",
+    "assertions",
+    "verification"
+  ],
+  "slug": "getting-started-with-systemverilog-assertions",
+  "excerpt": "An introduction to SystemVerilog Assertions for functional verification.",
+  "featured_image": "",
+  "status": "published"
+}

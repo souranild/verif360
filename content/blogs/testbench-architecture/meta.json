@@ -1,0 +1,15 @@
+{
+  "id": "blog-009",
+  "title": "Modular Testbench Architecture — Agents, TLM & Reuse",
+  "author": "Souranil Das",
+  "date": "2026-01-31T00:00:00Z",
+  "tags": [
+    "uvm",
+    "architecture",
+    "tlm"
+  ],
+  "slug": "testbench-architecture",
+  "excerpt": "Design reusable agents and TLM interfaces to make testbenches modular and maintainable.",
+  "featured_image": "",
+  "status": "published"
+}

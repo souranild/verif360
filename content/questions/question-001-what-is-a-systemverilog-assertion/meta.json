@@ -1,0 +1,26 @@
+{
+  "id": "question-001",
+  "title": "SVA Fundamentals — 'a implies b' (spot protocol violations)",
+  "difficulty": "easy",
+  "tags": ["systemverilog", "assertions"],
+  "description": "Explain what an assertion does and how it helps catch protocol violations in simulation and formal.",
+  "examples": [
+    {
+      "input": "assert property (a |-> b);",
+      "output": "Passes if b follows a.",
+      "explanation": "This assertion checks that whenever a occurs, b follows."
+    }
+  ],
+  "constraints": "a and b must be valid signals.",
+  "hints": ["Review implication operators.", "Use disable iff for resets."],
+  "solution": { "language": "systemverilog", "code": "assert property (a |-> b);" },
+  "acceptance_rate": 0.95,
+  "submissions": 1200,
+  "companies": [
+    { "name": "NVIDIA", "logo": "/images/companies/nvidia.svg" },
+    { "name": "ARM", "logo": "/images/companies/arm.svg" }
+  ],
+  "slug": "what-is-a-systemverilog-assertion",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

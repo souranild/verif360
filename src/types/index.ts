@@ -2,7 +2,7 @@ export interface Blog {
   title: string;
   author: string;
   date: string;
-  content: string;
+  content?: string;
   tags: string[];
   slug: string;
   excerpt: string;
@@ -28,6 +28,7 @@ export interface Question {
   };
   acceptance_rate: number;
   submissions: number;
+  companies?: { name: string; logo?: string }[];
   slug: string;
 }
 

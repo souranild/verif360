@@ -1,7 +1,7 @@
 import { fetchQuestions } from "@/lib/data";
-import { notFound } from "next/navigation";
-import Navigation from "@/components/Navigation";
+import { notFound, redirect } from "next/navigation";
 import QuestionSolutionClient from "@/components/QuestionSolutionClient";
+import BlogContent from "@/components/BlogContent";
 
 interface QuestionPageProps {
   params: { slug: string };
@@ -9,16 +9,39 @@ interface QuestionPageProps {
 
 export default async function QuestionPage({ params }: QuestionPageProps) {
   const questions = await fetchQuestions();
-  const { slug } = await params;
-  const question = questions.find((q) => q.slug === slug);
+  const paramsResolved = await params; // params can be a Promise in Next.js
+  const { slug } = paramsResolved as { slug?: string };
+  console.log('Resolved slug:', slug);
+
+  let question = questions.find((q) => q.slug === slug || (q as any)['_dir'] === slug);
+
+  // Try stripping leading numeric prefix e.g. question-001-foo -> foo
+  if (!question && typeof slug === 'string') {
+    const m = slug.match(/^question-\d+-(.+)$/);
+    if (m && m[1]) {
+      const after = m[1];
+      question = questions.find((q) => q.slug === after || (q as any)['_dir'] === after);
+      if (question) {
+        console.log('Found question by stripped slug:', after);
+      }
+    }
+  }
 
   if (!question) {
+    console.warn('Question not found for slug:', slug, 'available slugs:', questions.map((qq) => qq.slug));
     notFound();
+  }
+
+  // If requested via directory-style slug, redirect to canonical (meta) slug
+  if (question.slug !== slug) {
+    // Avoid redirect loops: only redirect when canonical slug is different
+    const canonical = question.slug;
+    console.log('Redirecting to canonical slug:', canonical, 'from:', slug);
+    redirect(`/questions/${canonical}`);
   }
 
   return (
     <div className="min-h-screen bg-muted">
-      <Navigation />
       <div className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -71,14 +94,24 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
                     </span>
                   ))}
                 </div>
+                {question.companies?.length ? (
+                  <div className="flex items-center gap-3 mt-3">
+                    {question.companies.map((c: any) => (
+                      <div key={c.name} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <img src={c.logo} alt={c.name} className="w-6 h-6 rounded-sm border" />
+                        <span className="hidden sm:inline">{c.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
               </header>
 
               <section className="mb-6">
                 <h2 className="text-lg font-semibold mb-3 text-foreground">
                   Description
                 </h2>
-                <div className="text-muted-foreground mb-4 whitespace-pre-wrap">
-                  {question.description}
+                <div className="mb-4">
+                  <BlogContent source={question.content || question.description} className="prose max-w-none prose-headings:text-foreground prose-p:text-muted-foreground" />
                 </div>
               </section>
 

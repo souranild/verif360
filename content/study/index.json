@@ -1,0 +1,15 @@
+{
+  "id": "study-root",
+  "title": "Study Materials",
+  "slug": "study-materials",
+  "updated": "2026-01-31",
+  "children": [
+    {
+      "id": "study-plan",
+      "title": "Study Plan",
+      "slug": "study-plan",
+      "excerpt": "A sample study plan to get started with verification.",
+      "tags": ["intro", "verification"]
+    }
+  ]
+}

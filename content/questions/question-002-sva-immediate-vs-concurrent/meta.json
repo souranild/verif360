@@ -1,0 +1,23 @@
+{
+  "id": "question-002",
+  "title": "Immediate vs Concurrent SVA",
+  "difficulty": "medium",
+  "tags": ["systemverilog", "assertions"],
+  "description": "Describe the difference between immediate and concurrent assertions and give a small example for each.",
+  "examples": [
+    { "input": "assert (cond) else $error(\"Failed\");", "output": "Immediate assertion example.", "explanation": "Immediate assertions evaluate condition at the statement time." },
+    { "input": "assert property (@(posedge clk) a |-> b);", "output": "Concurrent assertion example.", "explanation": "Concurrent assertions evaluate across cycles." }
+  ],
+  "constraints": "",
+  "hints": [],
+  "solution": { "language": "systemverilog", "code": "// See content.md" },
+  "acceptance_rate": 0.85,
+  "submissions": 400,
+  "companies": [
+    { "name": "Google", "logo": "/images/companies/google.svg" },
+    { "name": "AMD", "logo": "/images/companies/amd.svg" }
+  ],
+  "slug": "sva-immediate-vs-concurrent",
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

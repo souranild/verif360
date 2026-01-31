@@ -1,0 +1,9 @@
+{
+  "id": "study-plan",
+  "title": "Study Plan",
+  "slug": "study-plan",
+  "excerpt": "A sample study plan to get started with verification.",
+  "tags": ["basics", "verification"],
+  "createdAt": "2026-01-31T00:00:00Z",
+  "updatedAt": "2026-01-31T00:00:00Z"
+}

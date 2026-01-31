@@ -1,0 +1,16 @@
+{
+  "id": "blog-004",
+  "title": "Why Clean Testbench Code Matters: Lessons from Real Projects",
+  "author": "Souranil Das",
+  "date": "2026-01-30T00:00:00Z",
+  "tags": [
+    "testbench",
+    "verification",
+    "best practices",
+    "clean code"
+  ],
+  "slug": "organizing-testbench-code",
+  "excerpt": "Explore the impact of well-organized testbench code on verification efficiency and project success.",
+  "featured_image": "",
+  "status": "published"
+}
