@@ -11,6 +11,7 @@ export interface Blog {
 }
 
 export interface Question {
+  id: string;
   title: string;
   difficulty: string;
   tags: string[];
@@ -30,6 +31,7 @@ export interface Question {
   submissions: number;
   companies?: { name: string; logo?: string }[];
   slug: string;
+  content?: string;
 }
 
 export interface StudyNode {

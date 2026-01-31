@@ -68,9 +68,15 @@ export default function FullBackgroundAnimation() {
 
     function handlePointerMove(e: MouseEvent | TouchEvent) {
       let px: number, py: number;
-      if (e instanceof TouchEvent) {
-        const t = e.touches[0];
+      // TouchEvent may be undefined during SSR; guard before using instanceof
+      if (typeof TouchEvent !== 'undefined' && e instanceof TouchEvent) {
+        const t = (e as TouchEvent).touches[0];
         if (!t) return;
+        px = t.clientX;
+        py = t.clientY;
+      } else if ((e as any)?.touches && (e as any).touches.length > 0) {
+        // fallback for touch-like objects
+        const t = (e as any).touches[0];
         px = t.clientX;
         py = t.clientY;
       } else {

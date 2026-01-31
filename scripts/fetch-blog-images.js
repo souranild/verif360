@@ -14,6 +14,22 @@ async function fetchImage(url, destPath) {
   });
 }
 
+async function fetchWithRetries(url, destPath, attempts = 3) {
+  let attempt = 0;
+  while (attempt < attempts) {
+    try {
+      await fetchImage(url, destPath);
+      return;
+    } catch (err) {
+      attempt++;
+      const backoff = Math.min(2000 * Math.pow(2, attempt), 16000);
+      console.warn(`fetchWithRetries attempt ${attempt} failed for ${url}:`, err.message || err);
+      if (attempt >= attempts) throw err;
+      await new Promise((r) => setTimeout(r, backoff + Math.floor(Math.random() * 500)));
+    }
+  }
+}
+
 async function main() {
   const blogsDir = path.join(process.cwd(), 'content', 'blogs');
   if (!fs.existsSync(blogsDir)) {
@@ -43,18 +59,22 @@ async function main() {
     }
 
     const query = (Array.isArray(meta.tags) && meta.tags[0]) || meta.title || slug || 'verification';
-    const unsplash = `https://source.unsplash.com/1600x900/?${encodeURIComponent(String(query))}`;
-    const destPath = path.join(process.cwd(), 'public', 'blogs', slug, 'images', 'cover.jpg');
+    // Build a conservative query string: prefer first tag, else slug
+    const rawQuery = (Array.isArray(meta.tags) && meta.tags[0]) || meta.title || slug || 'verification';
+    const q = String(rawQuery).replace(/[\s\/\\#%&<>\?\{\}\|\^~\[\]`]+/g, ' ');
+    const unsplash = `https://source.unsplash.com/1600x900/?${encodeURIComponent(q)}`;
+    // Save into the content folder so source-of-truth contains the image
+    const destPath = path.join(process.cwd(), 'content', 'blogs', slug, 'images', 'cover.jpg');
 
     try {
       console.log('Downloading for', slug, 'from', unsplash);
-      await fetchImage(unsplash, destPath);
-      // Update meta to point to local image
+      await fetchWithRetries(unsplash, destPath, 4);
+      // Update meta to point to local image under /blogs/
       meta.featured_image = `/blogs/${slug}/images/cover.jpg`;
       fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2));
-      console.log('Saved cover image for', slug);
+      console.log('Saved cover image for', slug, '->', destPath);
     } catch (err) {
-      console.warn('Failed to download image for', slug, err);
+      console.warn('Failed to download image for', slug, err.message || err);
     }
   }
 

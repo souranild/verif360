@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Button from './Button';
 import type { StudyNode } from '@/types';
 
@@ -8,6 +9,8 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [study, setStudy] = useState<StudyNode | null>(null);
+  const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetch('/api/study')
@@ -42,11 +45,15 @@ export default function Header() {
 
           <div className="flex items-center space-x-4">
             <div className="hidden md:block">
-              <input
-                type="search"
-                placeholder="Search problems, blogs..."
-                className="px-3 py-2 rounded text-black w-72 bg-white placeholder-gray-500 border border-gray-200"
-              />
+              <form onSubmit={(e) => { e.preventDefault(); router.push(`/search?q=${encodeURIComponent(searchTerm)}`); }}>
+                <input
+                  type="search"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search problems, blogs..."
+                  className="px-3 py-2 rounded text-black w-72 bg-white placeholder-gray-500 border border-gray-200"
+                />
+              </form>
             </div>
             <Button variant="secondary" size="sm">Sign In</Button>
           </div>
@@ -61,7 +68,9 @@ export default function Header() {
             <button onClick={() => setOpen((s) => !s)} className="w-full text-left px-2 py-1 rounded hover:bg-white/10">Study Plan ▾</button>
             <a href="/blog" className="block px-2 py-1 rounded hover:bg-white/10">Blogs</a>
             <div className="pt-2">
-              <input type="search" placeholder="Search" className="w-full px-3 py-2 rounded bg-white text-black" />
+              <form onSubmit={(e) => { e.preventDefault(); setMobileOpen(false); router.push(`/questions?q=${encodeURIComponent(searchTerm)}`); }}>
+                <input type="search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search" className="w-full px-3 py-2 rounded bg-white text-black" />
+              </form>
             </div>
           </div>
         </div>
