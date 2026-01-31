@@ -17,7 +17,13 @@ export default function BlogContent({ source, className }: Props) {
   // Convert Markdown to HTML only if not already HTML
   const convertedHtml = useMemo(() => {
     if (isHtml) return source;
-    const converter = new Converter();
+    const converter = new Converter({
+      tables: true,
+      simplifiedAutoLink: true,
+      strikethrough: true,
+      tasklists: true,
+      ghCodeBlocks: true,
+    });
     return converter.makeHtml(source);
   }, [source, isHtml]);
 
@@ -46,6 +52,28 @@ export default function BlogContent({ source, className }: Props) {
     }
     return convertedHtml;
   }, [convertedHtml, domPurify]);
+
+  // Run syntax highlighting after sanitized HTML updates
+  useEffect(() => {
+    let mounted = true;
+    if (typeof window === "undefined") return;
+    (async () => {
+      try {
+        // import highlight.js and a style
+        const hl = await import("highlight.js");
+        await import("highlight.js/styles/github-dark.css");
+        if (mounted && hl && typeof hl.highlightAll === "function") {
+          hl.highlightAll();
+        }
+      } catch (err) {
+        // ignore highlight errors
+        // console.warn('highlight failed', err);
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, [sanitizedHtml]);
 
   return (
     <article
