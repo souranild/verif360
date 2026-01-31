@@ -77,9 +77,9 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
                 <h2 className="text-lg font-semibold mb-3 text-foreground">
                   Description
                 </h2>
-                <p className="text-muted-foreground mb-4">
+                <div className="text-muted-foreground mb-4 whitespace-pre-wrap">
                   {question.description}
-                </p>
+                </div>
               </section>
 
               <section className="mb-6">
@@ -91,20 +91,16 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
                     key={index}
                     className="mb-4 p-4 bg-secondary rounded border border-border"
                   >
-                    <p className="font-medium mb-2 text-foreground">
-                      Example {index + 1}:
-                    </p>
-                    <p className="text-sm mb-2 text-muted-foreground">
-                      <strong>Input:</strong> {example.input}
-                    </p>
-                    <p className="text-sm mb-2 text-muted-foreground">
-                      <strong>Output:</strong> {example.output}
-                    </p>
-                    {example.explanation && (
-                      <p className="text-sm text-muted-foreground">
-                        <strong>Explanation:</strong> {example.explanation}
-                      </p>
-                    )}
+                    <p className="font-medium mb-2 text-foreground">Example {index + 1}:</p>
+                    <div className="mb-2">
+                      <div className="font-medium mb-1 text-foreground">Input:</div>
+                      <pre className="text-sm mb-2 text-muted-foreground bg-secondary p-3 rounded overflow-x-auto whitespace-pre-wrap">{example.input}</pre>
+                      <div className="font-medium mb-1 text-foreground">Output:</div>
+                      <pre className="text-sm mb-2 text-muted-foreground bg-secondary p-3 rounded overflow-x-auto whitespace-pre-wrap">{example.output}</pre>
+                      {example.explanation && (
+                        <p className="text-sm text-muted-foreground"><strong>Explanation:</strong> {example.explanation}</p>
+                      )}
+                    </div>
                   </div>
                 ))}
               </section>

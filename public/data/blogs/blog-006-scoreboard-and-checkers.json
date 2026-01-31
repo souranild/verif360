@@ -1,0 +1,19 @@
+{
+  "id": "blog-006",
+  "title": "Scoreboards & Checkers — Verifying Streaming Protocols",
+  "author": "Souranil Das",
+  "date": "2026-01-31T00:00:00Z",
+  "content": "# Scoreboards & Checkers — Verifying Streaming Protocols\n\nStreaming protocols need strong checkers and scoreboards to ensure ordering, no drops, and no duplicates. This post explains how to construct monitors, reference models, and scoreboards.\n\n## Approach\n- Transactionize signals in monitors.\n- Maintain expected queues and compare observed transactions.\n- Log contextual diagnostics for mismatches.\n\n## Example approach (pseudo)\n```
+expected_q.push(expected_txn);
+on observed:
+ if (expected_q.empty) -> report unexpected;
+ else if (observed != expected_q.peek) -> report mismatch;
+ else -> expected_q.pop();
+```
+\n## Resources\n- Verification Academy: streaming protocol examples: https://lnkd.in/gEDzd5uK\n- AMIQ articles on scoreboards: https://lnkd.in/g6yqYcZy\n\n*References: Verification Academy, AMIQ*",
+  "tags": ["scoreboard","monitor","protocol","testbench"],
+  "slug": "scoreboard-checkers",
+  "excerpt": "Design robust monitors and scoreboards for streaming protocols to detect ordering and loss issues.",
+  "featured_image": "",
+  "status": "published"
+}

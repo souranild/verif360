@@ -1,0 +1,12 @@
+{
+  "id": "blog-009",
+  "title": "Modular Testbench Architecture — Agents, TLM & Reuse",
+  "author": "Souranil Das",
+  "date": "2026-01-31T00:00:00Z",
+  "content": "# Modular Testbench Architecture — Agents, TLM & Reuse\n\nDesigning a reusable testbench reduces duplication and speeds up project ramp-up. This post covers agents, TLM communication, and component interfaces.\n\n## Principles\n- Use virtual interfaces and TLM ports for loose coupling.\n- Keep monitors small and focused; offload checking to scoreboards.\n- Make components configurable via `uvm_config_db`.\n\n## References\n- UVMkit: https://www.uvmkit.com/\n- Go2UVM community: https://github.com/go2uvm\n\n*References: UVMkit, go2uvm*",
+  "tags": ["uvm","architecture","tlm"],
+  "slug": "testbench-architecture",
+  "excerpt": "Design reusable agents and TLM interfaces to make testbenches modular and maintainable.",
+  "featured_image": "",
+  "status": "published"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "blog-002",
+  "title": "UVM Sequences & Constrained-Random — Generating Useful Packets",
+  "author": "Souranil Das",
+  "date": "2026-01-31T00:00:00Z",
+  "content": "# UVM Sequences & Constrained-Random — Generating Useful Packets\n\nConstrained-random is powerful when you define legal, performant constraints and use sequences to exercise the DUT. This post covers sequence_item design, constraints best practices, and strategies for reproducible tests.\n\n## Best practices\n- Use range constraints (e.g., `addr inside {[8'h10:8'hEF]}`) instead of enumerating huge lists.\n- Avoid heavy cross-field constraints; use pre_randomize/post_randomize for derived fields.\n- Use `randcase` or `weights` to bias rare scenarios when needed.\n\n## Example sketch (pseudo)\n```systemverilog
+class pkt extends uvm_sequence_item; rand bit [7:0] addr; rand bit [31:0] data; constraint legal_addr { addr inside {[8'h10:8'hEF]}; } endclass
+// sequence: randomize, start_item, finish_item
+```
+\n## Read more\n- UVMkit: https://www.uvmkit.com/\n- AMIQ constraints articles: https://lnkd.in/g6yqYcZy\n\n*References: UVMkit, AMIQ*",
+  "tags": ["uvm","randomization","constraints"],
+  "slug": "uvm-sequences-randomization",
+  "excerpt": "How to build UVM sequences and constraints that produce useful, fast random tests.",
+  "featured_image": "",
+  "status": "published"
+}

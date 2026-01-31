@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchBlogs, fetchQuestions, fetchCourses } from '@/lib/data';
+// import { fetchBlogs, fetchQuestions, fetchCourses } from '@/lib/data';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
 import Navigation from '@/components/Navigation';
@@ -11,12 +11,16 @@ import Link from 'next/link';
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
   const [questions, setQuestions] = useState([]);
-  const [courses, setCourses] = useState([]);
+  // const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetchBlogs().then(setBlogs);
-    fetchQuestions().then(setQuestions);
-    fetchCourses().then(setCourses);
+    fetch('/api/blogs')
+      .then((res) => res.json())
+      .then(setBlogs);
+    fetch('/api/questions')
+      .then((res) => res.json())
+      .then(setQuestions);
+    // fetchCourses().then(setCourses);
   }, []);
 
   return (
@@ -99,27 +103,17 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-            {/* Courses */}
+            {/* Useful Info */}
             <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-4">Featured Courses</h3>
-              {courses.slice(0, 3).map((course) => (
-                <motion.div
-                  key={course.slug}
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.1 * courses.indexOf(course) }}
-                >
-                  <Link href={`/explore/${course.slug}`} className="block">
-                    <Card className="mb-4 cursor-pointer">
-                      <h4 className="font-semibold text-foreground">{course.title}</h4>
-                      <p className="text-sm text-muted-foreground">By {course.instructor}</p>
-                      <p className="text-sm text-muted-foreground">Level: {course.level}</p>
-                      <p className="text-lg font-bold text-success">${course.price}</p>
-                      <span className="text-primary hover:text-primary-hover text-sm font-medium">View Course →</span>
-                    </Card>
-                  </Link>
-                </motion.div>
-              ))}
+              <h3 className="text-2xl font-semibold text-foreground mb-4">Useful Information</h3>
+              <Card className="mb-4">
+                <ul className="list-disc pl-5 text-sm text-muted-foreground">
+                  <li><a href="https://systemverilog.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">SystemVerilog Official Docs</a></li>
+                  <li><a href="https://verificationacademy.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Verification Academy</a></li>
+                  <li><a href="https://github.com/chipsalliance/sv-tests" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">SV-Tests GitHub</a></li>
+                  {/* Add more useful links here */}
+                </ul>
+              </Card>
             </div>
           </div>
         </div>

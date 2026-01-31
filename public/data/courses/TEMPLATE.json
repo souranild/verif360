@@ -1,0 +1,9 @@
+{
+  "id": "course-001",
+  "title": "Sample Course Title",
+  "description": "A short summary of the course.",
+  "content": "Full course content goes here. You can use Markdown if needed.",
+  "tags": ["tag1", "tag2"],
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "topic-001",
+  "title": "Getting Started with Verification",
+  "slug": "getting-started",
+  "excerpt": "A practical intro to functional verification: goals, flow, and tools.",
+  "content": "# Getting Started with Verification\n\nThis is a standalone page that expands the brief intro — covering the verification lifecycle, testbench components, and recommended learning path.\n\n## Quick Links\n- Introduction to assertions\n- Setting up a simulator\n",
+  "tags": ["intro","verification"],
+  "children": []
+}

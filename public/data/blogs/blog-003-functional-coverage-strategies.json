@@ -1,0 +1,19 @@
+{
+  "id": "blog-003",
+  "title": "Functional Coverage — Designing Covergroups That Tell You What You Miss",
+  "author": "Souranil Das",
+  "date": "2026-01-31T00:00:00Z",
+  "content": "# Functional Coverage — Designing Covergroups That Tell You What You Miss\n\nFunctional coverage captures the scenarios your tests exercise. This post shows how to design coverpoints and cross coverage to find holes and plan closure steps.\n\n## Tips\n- Sample at stable points using `iff` qualifiers.\n- Cross related coverpoints (type × length) to expose missing combinations.\n- Weight rare bins to spotlight them in reports.\n\n## Example\n```systemverilog
+covergroup pkt_cg @(posedge clk);
+  type_cp: coverpoint pkt.type { bins r = {0}; bins w = {1}; }
+  len_cp: coverpoint pkt.len;
+  cross_cp: cross type_cp, len_cp;
+endgroup
+```
+\n## Resources\n- Verification Academy (coverage): https://lnkd.in/gEDzd5uK\n- ChipVerify coverage primer: https://lnkd.in/gV3QfsRT\n\n*References: Verification Academy, ChipVerify*",
+  "tags": ["coverage","functional-coverage"],
+  "slug": "functional-coverage-strategies",
+  "excerpt": "Design covergroups and crosses to find and close gaps in verification coverage.",
+  "featured_image": "",
+  "status": "published"
+}

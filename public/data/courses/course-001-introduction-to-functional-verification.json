@@ -1,0 +1,9 @@
+{
+  "id": "course-001",
+  "title": "Introduction to Functional Verification",
+  "description": "A beginner's course on functional verification methodologies.",
+  "content": "This course covers the basics of functional verification...",
+  "tags": ["verification", "course"],
+  "createdAt": "2026-01-30T00:00:00Z",
+  "updatedAt": "2026-01-30T00:00:00Z"
+}

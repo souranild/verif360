@@ -1,0 +1,9 @@
+{
+  "id": "topic-003",
+  "title": "Constrained Randomization Best Practices",
+  "slug": "constrained-random",
+  "excerpt": "Strategies for constraint writing and random test generation.",
+  "content": "# Constrained Randomization\n\nExamples of writing constraints, avoiding corner-case traps, and using sequences to get coverage across packet formats.\n",
+  "tags": ["random","constraints"],
+  "children": []
+}

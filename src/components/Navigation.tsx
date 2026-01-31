@@ -10,7 +10,7 @@ export default function Navigation() {
           </div>
           <div className="flex items-center space-x-4">
             <a href="/questions" className="text-muted-foreground hover:text-foreground transition-colors">Problems</a>
-            <a href="/explore" className="text-muted-foreground hover:text-foreground transition-colors">Explore</a>
+            {/* <a href="/explore" className="text-muted-foreground hover:text-foreground transition-colors">Explore</a> */}
             <a href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">Blogs</a>
             <Button>Sign In</Button>
           </div>

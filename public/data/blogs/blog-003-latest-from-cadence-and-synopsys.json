@@ -1,0 +1,12 @@
+{
+  "id": "blog-003",
+  "title": "What’s New in EDA: Cadence & Synopsys Updates for 2026",
+  "author": "Souranil Das",
+  "date": "2026-01-30T00:00:00Z",
+  "content": "## What’s New in EDA: Cadence & Synopsys Updates for 2026\n\nThe Electronic Design Automation (EDA) landscape is always evolving, and 2026 is no exception. Both Cadence and Synopsys have rolled out exciting new features and tools that are transforming how we approach verification.\n\n### Cadence: AI-Driven Verification\nCadence’s latest JasperGold release introduces AI-powered property synthesis, making assertion generation faster and smarter. The new Xcelium engine also boasts improved parallelism, reducing simulation times for large SoCs.\n\n### Synopsys: Cloud-Native Workflows\nSynopsys has doubled down on cloud integration with VCS Cloud, enabling scalable regression runs and seamless collaboration. Their Verdi tool now features enhanced debug automation, leveraging machine learning to suggest root causes for failures.\n\n### Why It Matters\nThese updates mean faster verification cycles, smarter debugging, and more productive teams. Staying current with EDA tool advancements is crucial for competitive verification teams.\n\n---\n\n*Written by Souranil Das*\n",
+  "tags": ["eda", "cadence", "synopsys", "tools", "verification"],
+  "slug": "latest-from-cadence-and-synopsys",
+  "excerpt": "A look at the latest innovations and tool updates from Cadence and Synopsys that are shaping the future of verification.",
+  "featured_image": "",
+  "status": "published"
+}

@@ -1,0 +1,69 @@
+{
+  "id": "study-root",
+  "title": "Study Materials",
+  "slug": "study-materials",
+  "updated": "2026-01-31",
+  "children": [
+    {
+      "id": "cat-basics",
+      "title": "Basics",
+      "slug": "basics",
+      "children": [
+        {
+          "id": "topic-001",
+          "title": "Getting Started with Verification",
+          "slug": "getting-started",
+          "excerpt": "A practical intro to functional verification: goals, flow, and tools.",
+          "content": "# Getting Started with Verification\n\nThis topic introduces the goals of functional verification, common flows (RTL simulation, UVM, formal), and recommended first steps for engineers beginning verification.\n\n## What you'll learn\n- High-level verification goals\n- Typical verification flow and toolchain\n- Basic terms: DUT, TB, UVM, assertions\n",
+          "tags": ["intro","verification"]
+        },
+        {
+          "id": "topic-002",
+          "title": "SystemVerilog Syntax & Simulation",
+          "slug": "systemverilog-syntax",
+          "excerpt": "Key SystemVerilog syntax, constructs and simulation basics.",
+          "content": "# SystemVerilog Basics\n\nCovers modules, interfaces, always blocks, procedural statements, and basic simulation tips. Includes short code examples.\n\n```systemverilog\nmodule counter(input clk, input rst, output logic [3:0] q);\n  always_ff @(posedge clk or posedge rst) begin\n    if (rst) q <= 0; else q <= q + 1;\n  end\nendmodule\n```",
+          "tags": ["systemverilog","syntax"]
+        }
+      ]
+    },
+    {
+      "id": "cat-uvm",
+      "title": "UVM",
+      "slug": "uvm",
+      "children": [
+        {
+          "id": "topic-004",
+          "title": "UVM Phases & Agents",
+          "slug": "uvm-phases-agents",
+          "excerpt": "How UVM phases and agents (drivers, monitors, scoreboards) work together.",
+          "content": "# UVM Phases & Agents — Building Reusable Testbenches\n\nUVM phasing and component architecture are core to creating scalable testbenches. This topic outlines phases (build, connect, run, extract) and the role of agents, drivers, monitors, and scoreboards.\n\n## Anatomy of an Agent\n- **Driver**: converts transactions to pin-level signals.\n- **Monitor**: observes signals and creates transactions (TLM).\n- **Sequencer/Sequence**: drives driver with sequence_items.\n- **Scoreboard**: compares DUT output with reference model.\n",
+          "tags": ["uvm","agents","testbench"]
+        },
+        {
+          "id": "topic-003",
+          "title": "Constrained Randomization Best Practices",
+          "slug": "constrained-random",
+          "excerpt": "Strategies for constraint writing and random test generation.",
+          "content": "# Constrained Randomization\n\nThis topic covers writing good constraints, avoiding overspecification, and getting targeted coverage from random tests.\n\n## Tips\n- Prefer functional constraints to bit-level constraints\n- Use coverage-guided generation when possible\n",
+          "tags": ["random","constraints"]
+        }
+      ]
+    },
+    {
+      "id": "cat-advanced",
+      "title": "Advanced Topics",
+      "slug": "advanced",
+      "children": [
+        {
+          "id": "topic-005",
+          "title": "Formal Verification — Intro",
+          "slug": "formal-verification",
+          "excerpt": "An introduction to formal methods and common use-cases.",
+          "content": "# Formal Verification 101\n\nIntroductory coverage of formal verification: model checking, properties, and typical property examples (e.g., protocol assertions).\n",
+          "tags": ["formal","property"]
+        }
+      ]
+    }
+  ]
+}

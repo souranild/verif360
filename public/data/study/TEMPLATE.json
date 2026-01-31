@@ -1,0 +1,9 @@
+{
+  "id": "topic-000",
+  "title": "Topic Title",
+  "slug": "topic-title",
+  "excerpt": "Short one-line summary of this topic",
+  "content": "# Topic Title\n\nWrite topic content in Markdown here. Use headings, lists, and code blocks.\n\n## Subtopic\n- Point one\n- Point two\n",
+  "tags": ["tag1", "tag2"],
+  "children": []
+}

@@ -1,10 +1,19 @@
-import { fetchBlogs } from '@/lib/data';
+"use client";
+// import { fetchBlogs } from '@/lib/data';
 import Card from '@/components/Card';
 import Navigation from '@/components/Navigation';
 import Link from 'next/link';
 
-export default async function BlogsPage() {
-  const blogs = await fetchBlogs();
+import { useEffect, useState } from 'react';
+
+export default function BlogsPage() {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/blogs')
+      .then((res) => res.json())
+      .then(setBlogs);
+  }, []);
 
   return (
     <div className="min-h-screen bg-muted">

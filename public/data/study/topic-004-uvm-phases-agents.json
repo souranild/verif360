@@ -1,0 +1,9 @@
+{
+  "id": "topic-004",
+  "title": "UVM Phases & Agents",
+  "slug": "uvm-phases-agents",
+  "excerpt": "How UVM phases and agents (drivers, monitors, scoreboards) work together.",
+  "content": "# UVM Phases & Agents — Building Reusable Testbenches\n\nUVM phasing and component architecture are core to creating scalable testbenches. This page expands on roles and best practices for agents.\n\n## Anatomy of an Agent\n- **Driver**: converts transactions to pin-level signals.\n- **Monitor**: observes signals and creates transactions (TLM).\n- **Sequencer/Sequence**: drives driver with sequence_items.\n- **Scoreboard**: compares DUT output with reference model.\n",
+  "tags": ["uvm","agents","testbench"],
+  "children": []
+}

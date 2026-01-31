@@ -31,6 +31,16 @@ export interface Question {
   slug: string;
 }
 
+export interface StudyNode {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  content?: string;
+  tags?: string[];
+  children?: StudyNode[];
+}
+
 export interface Course {
   title: string;
   instructor: string;
